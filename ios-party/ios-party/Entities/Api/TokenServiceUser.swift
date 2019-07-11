@@ -1,6 +1,6 @@
 import Foundation
 
-struct User: Encodable, Decodable {
+struct TokenServiceUser: Encodable {
     let username: String
     let password: String
 }

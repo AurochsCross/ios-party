@@ -1,26 +1,13 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    
-    struct ViewConfig {
-        static let nibName = "LoginView"
-    }
-    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     private let sessionManager = SessionManager()
     
-    init() {
-        super.init(
-            nibName: ViewConfig.nibName,
-            bundle: nil)
-        
+    override func viewDidLoad() {
         sessionManager.delegate = self
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
     }
     
     @IBAction func onLoginClicked(_ sender: Any) {
@@ -38,6 +25,10 @@ extension LoginViewController: SessionManagerDelegate {
     }
     
     func sessionManagerLoginError(_ sessionManager: SessionManager, error: Error) {
-        print(error.localizedDescription)
+        if let error = error as? AuthorizationError, error == AuthorizationError.unauthorized {
+            print("Login error: unauthorized")
+        } else {
+            print("Login error: \(error.localizedDescription)")
+        }
     }
 }
