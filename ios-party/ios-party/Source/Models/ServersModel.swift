@@ -4,17 +4,65 @@ import CoreData
 
 class ServersModel {
     public weak var delegate: ServersModelDelegate?
-    private(set) var storedServers = [Server]()
+    private var storedServers = [Server]()
+    
+    var sortType = SortType.alphanumerical {
+        didSet {
+            if oldValue != sortType {
+                sortedServerCahce = nil
+            }
+        }
+    }
+    
+    var servers: [Server] {
+        get {
+            return getServers()
+        }
+    }
+    
+    private var sortedServerCahce: [Server]?
+    
+    var availableServers: [Server] {
+        return storedServers.filter { $0.isOnline }
+    }
+    
+    var offlineServers: [Server] {
+        return storedServers.filter { !$0.isOnline }
+    }
     
     private var managedContext: NSManagedObjectContext?
     private var serverEntityDescription: NSEntityDescription?
+    
+    enum SortType {
+        case byDistance
+        case alphanumerical
+    }
     
     init() {
         setupCoreData()
         fetchStoredServers()
     }
     
-    func getServers() {
+    func getServers(sorted sortType: SortType? = nil) -> [Server] {
+        self.sortType = sortType ?? self.sortType
+        
+        if sortedServerCahce != nil {
+            return sortedServerCahce!
+        }
+        
+        sortedServerCahce = availableServers.sorted(by: { a, b in
+            switch self.sortType {
+            case .alphanumerical:
+                return a.name ?? "" < b.name ?? ""
+            case .byDistance:
+                return a.distance < b.distance
+            }
+        })
+        
+        return sortedServerCahce!
+    }
+    
+    func fetchServers() {
         guard let token = SessionManager.shared.token else { return }
         let url = URL(string: Config.Api.Endpoint.servers)!
         var request = URLRequest(url: url)
@@ -39,6 +87,7 @@ class ServersModel {
     }
     
     private func updateServers(withReceivedServerList serverList: [ServerServiceResponse]) {
+        sortedServerCahce = nil
         storedServers.forEach { $0.isOnline = false }
         serverList.forEach { receivedServer in
             if let storedServer = storedServers.first(where: { $0.name ?? "" == receivedServer.name }) {
