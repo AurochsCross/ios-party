@@ -15,7 +15,7 @@
 		A78E2ED822D6000B00EB1080 /* Config+Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78E2ED722D6000B00EB1080 /* Config+Api.swift */; };
 		A78E2EDA22D60D0100EB1080 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78E2ED922D60D0100EB1080 /* SessionManager.swift */; };
 		A78E2EDD22D60E6700EB1080 /* TokenServiceUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78E2EDC22D60E6700EB1080 /* TokenServiceUser.swift */; };
-		A78E2EE022D61AF000EB1080 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78E2EDF22D61AF000EB1080 /* Token.swift */; };
+		A78E2EE022D61AF000EB1080 /* TokenServiceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78E2EDF22D61AF000EB1080 /* TokenServiceResponse.swift */; };
 		A78E2EE322D61C8400EB1080 /* Encodable+Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78E2EE222D61C8400EB1080 /* Encodable+Json.swift */; };
 		A78E2EE522D61CE900EB1080 /* Decodable+Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78E2EE422D61CE900EB1080 /* Decodable+Json.swift */; };
 		A78E2EE722D6242D00EB1080 /* SessionManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78E2EE622D6242D00EB1080 /* SessionManagerDelegate.swift */; };
@@ -24,6 +24,12 @@
 		A78E2EEF22D6317300EB1080 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A78E2EEE22D6317300EB1080 /* LoginView.xib */; };
 		A78E2EF122D6E43B00EB1080 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78E2EF022D6E43B00EB1080 /* KeychainManager.swift */; };
 		A78E2EF322D6E65300EB1080 /* Config+Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78E2EF222D6E65300EB1080 /* Config+Security.swift */; };
+		A78E2EFB22D6F65B00EB1080 /* ServersView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A78E2EFA22D6F65B00EB1080 /* ServersView.xib */; };
+		A78E2EFD22D6F67400EB1080 /* ServersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78E2EFC22D6F67400EB1080 /* ServersViewController.swift */; };
+		A78E2F0022D6F6B100EB1080 /* ServersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78E2EFF22D6F6B100EB1080 /* ServersModel.swift */; };
+		A78E2F0222D70E4F00EB1080 /* ServerServiceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78E2F0122D70E4F00EB1080 /* ServerServiceResponse.swift */; };
+		A78E2F0422D7176E00EB1080 /* ServersModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78E2F0322D7176E00EB1080 /* ServersModelDelegate.swift */; };
+		A78E2F0822D7664500EB1080 /* Config+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78E2F0722D7664400EB1080 /* Config+CoreData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +43,7 @@
 		A78E2ED722D6000B00EB1080 /* Config+Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Config+Api.swift"; sourceTree = "<group>"; };
 		A78E2ED922D60D0100EB1080 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		A78E2EDC22D60E6700EB1080 /* TokenServiceUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenServiceUser.swift; sourceTree = "<group>"; };
-		A78E2EDF22D61AF000EB1080 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		A78E2EDF22D61AF000EB1080 /* TokenServiceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenServiceResponse.swift; sourceTree = "<group>"; };
 		A78E2EE222D61C8400EB1080 /* Encodable+Json.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Json.swift"; sourceTree = "<group>"; };
 		A78E2EE422D61CE900EB1080 /* Decodable+Json.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decodable+Json.swift"; sourceTree = "<group>"; };
 		A78E2EE622D6242D00EB1080 /* SessionManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManagerDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +52,12 @@
 		A78E2EEE22D6317300EB1080 /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		A78E2EF022D6E43B00EB1080 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		A78E2EF222D6E65300EB1080 /* Config+Security.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Config+Security.swift"; sourceTree = "<group>"; };
+		A78E2EFA22D6F65B00EB1080 /* ServersView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServersView.xib; sourceTree = "<group>"; };
+		A78E2EFC22D6F67400EB1080 /* ServersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServersViewController.swift; sourceTree = "<group>"; };
+		A78E2EFF22D6F6B100EB1080 /* ServersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServersModel.swift; sourceTree = "<group>"; };
+		A78E2F0122D70E4F00EB1080 /* ServerServiceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ServerServiceResponse.swift; path = ../ServerServiceResponse.swift; sourceTree = "<group>"; };
+		A78E2F0322D7176E00EB1080 /* ServersModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServersModelDelegate.swift; sourceTree = "<group>"; };
+		A78E2F0722D7664400EB1080 /* Config+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Config+CoreData.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,14 +90,9 @@
 		A78E2EB722D5FCAF00EB1080 /* ios-party */ = {
 			isa = PBXGroup;
 			children = (
-				A78E2EB822D5FCAF00EB1080 /* AppDelegate.swift */,
-				A78E2EE122D61C6D00EB1080 /* Extensions */,
-				A78E2ED222D5FF5000EB1080 /* Services */,
 				A78E2ED122D5FD0F00EB1080 /* Assets */,
 				A78E2ECD22D5FCB700EB1080 /* Config */,
-				A78E2ED022D5FCFF00EB1080 /* Entities */,
-				A78E2ECF22D5FCF700EB1080 /* ViewControllers */,
-				A78E2ECE22D5FCF100EB1080 /* Views */,
+				A78E2F0922D76C6D00EB1080 /* Source */,
 			);
 			path = "ios-party";
 			sourceTree = "<group>";
@@ -96,9 +103,6 @@
 				A78E2EC422D5FCB100EB1080 /* LaunchScreen.storyboard */,
 				A78E2EC722D5FCB100EB1080 /* Info.plist */,
 				A78E2EBF22D5FCAF00EB1080 /* ios_party.xcdatamodeld */,
-				A78E2ED522D5FFCA00EB1080 /* Config.swift */,
-				A78E2ED722D6000B00EB1080 /* Config+Api.swift */,
-				A78E2EF222D6E65300EB1080 /* Config+Security.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -107,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				A78E2EEE22D6317300EB1080 /* LoginView.xib */,
+				A78E2EFA22D6F65B00EB1080 /* ServersView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -115,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				A78E2EEC22D6261000EB1080 /* LoginViewController.swift */,
+				A78E2EFC22D6F67400EB1080 /* ServersViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -138,7 +144,6 @@
 		A78E2ED222D5FF5000EB1080 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				A78E2ED422D5FF8100EB1080 /* Api */,
 				A78E2ED322D5FF5D00EB1080 /* Authentification */,
 			);
 			path = Services;
@@ -149,24 +154,17 @@
 			children = (
 				A78E2ED922D60D0100EB1080 /* SessionManager.swift */,
 				A78E2EE622D6242D00EB1080 /* SessionManagerDelegate.swift */,
-				A78E2EE822D6253600EB1080 /* AuthorizationError.swift */,
 				A78E2EF022D6E43B00EB1080 /* KeychainManager.swift */,
 			);
 			path = Authentification;
 			sourceTree = "<group>";
 		};
-		A78E2ED422D5FF8100EB1080 /* Api */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Api;
-			sourceTree = "<group>";
-		};
 		A78E2EDE22D61ADA00EB1080 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				A78E2F0122D70E4F00EB1080 /* ServerServiceResponse.swift */,
 				A78E2EDC22D60E6700EB1080 /* TokenServiceUser.swift */,
-				A78E2EDF22D61AF000EB1080 /* Token.swift */,
+				A78E2EDF22D61AF000EB1080 /* TokenServiceResponse.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -174,10 +172,54 @@
 		A78E2EE122D61C6D00EB1080 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A78E2EE222D61C8400EB1080 /* Encodable+Json.swift */,
 				A78E2EE422D61CE900EB1080 /* Decodable+Json.swift */,
+				A78E2EE222D61C8400EB1080 /* Encodable+Json.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A78E2EFE22D6F69900EB1080 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A78E2EFF22D6F6B100EB1080 /* ServersModel.swift */,
+				A78E2F0322D7176E00EB1080 /* ServersModelDelegate.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A78E2F0922D76C6D00EB1080 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				A78E2F0B22D76D1000EB1080 /* Config */,
+				A78E2ED022D5FCFF00EB1080 /* Entities */,
+				A78E2F0A22D76CA200EB1080 /* Errors */,
+				A78E2EE122D61C6D00EB1080 /* Extensions */,
+				A78E2EFE22D6F69900EB1080 /* Models */,
+				A78E2ED222D5FF5000EB1080 /* Services */,
+				A78E2ECF22D5FCF700EB1080 /* ViewControllers */,
+				A78E2ECE22D5FCF100EB1080 /* Views */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		A78E2F0A22D76CA200EB1080 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				A78E2EE822D6253600EB1080 /* AuthorizationError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		A78E2F0B22D76D1000EB1080 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				A78E2EB822D5FCAF00EB1080 /* AppDelegate.swift */,
+				A78E2ED522D5FFCA00EB1080 /* Config.swift */,
+				A78E2ED722D6000B00EB1080 /* Config+Api.swift */,
+				A78E2EF222D6E65300EB1080 /* Config+Security.swift */,
+				A78E2F0722D7664400EB1080 /* Config+CoreData.swift */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A78E2EC622D5FCB100EB1080 /* LaunchScreen.storyboard in Resources */,
+				A78E2EFB22D6F65B00EB1080 /* ServersView.xib in Resources */,
 				A78E2EC322D5FCB100EB1080 /* Assets.xcassets in Resources */,
 				A78E2EEF22D6317300EB1080 /* LoginView.xib in Resources */,
 			);
@@ -251,11 +294,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A78E2F0022D6F6B100EB1080 /* ServersModel.swift in Sources */,
 				A78E2EED22D6261000EB1080 /* LoginViewController.swift in Sources */,
+				A78E2F0822D7664500EB1080 /* Config+CoreData.swift in Sources */,
+				A78E2F0422D7176E00EB1080 /* ServersModelDelegate.swift in Sources */,
 				A78E2ED822D6000B00EB1080 /* Config+Api.swift in Sources */,
 				A78E2EE722D6242D00EB1080 /* SessionManagerDelegate.swift in Sources */,
 				A78E2EDA22D60D0100EB1080 /* SessionManager.swift in Sources */,
-				A78E2EE022D61AF000EB1080 /* Token.swift in Sources */,
+				A78E2EE022D61AF000EB1080 /* TokenServiceResponse.swift in Sources */,
 				A78E2ED622D5FFCA00EB1080 /* Config.swift in Sources */,
 				A78E2EE922D6253600EB1080 /* AuthorizationError.swift in Sources */,
 				A78E2EE522D61CE900EB1080 /* Decodable+Json.swift in Sources */,
@@ -265,6 +311,8 @@
 				A78E2EE322D61C8400EB1080 /* Encodable+Json.swift in Sources */,
 				A78E2EDD22D60E6700EB1080 /* TokenServiceUser.swift in Sources */,
 				A78E2EF322D6E65300EB1080 /* Config+Security.swift in Sources */,
+				A78E2F0222D70E4F00EB1080 /* ServerServiceResponse.swift in Sources */,
+				A78E2EFD22D6F67400EB1080 /* ServersViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
