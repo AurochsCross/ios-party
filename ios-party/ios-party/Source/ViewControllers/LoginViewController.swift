@@ -3,11 +3,14 @@ import UIKit
 class LoginViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var viewBottomSafeAreaConstraint: NSLayoutConstraint!
     
     private let sessionManager = SessionManager()
     
     override func viewDidLoad() {
         sessionManager.delegate = self
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     @IBAction func onLoginClicked(_ sender: Any) {
@@ -30,5 +33,32 @@ extension LoginViewController: SessionManagerDelegate {
         } else {
             print("Login error: \(error.localizedDescription)")
         }
+    }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.5) {
+            self.viewBottomSafeAreaConstraint.constant = 200
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.5) {
+            self.viewBottomSafeAreaConstraint.constant = 0
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == usernameTextField {
+            passwordTextField.becomeFirstResponder()
+        } else {
+            onLoginClicked(self)
+            textField.resignFirstResponder()
+        }
+        
+        return true
     }
 }

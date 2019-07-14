@@ -37,7 +37,7 @@ class ServersView: UIView {
                 listHeaderDistanceTitle.style(listHeaderTitleStyle)
             ),
             sortButton.style(sortButtonStyle).sv(
-                sortButtonContentContainer.sv(
+                sortButtonContentContainer.style(sortButtonContainerStyle).sv(
                     sortButtonIcon.style(sortButtonIconStyle),
                     sortButtonTitle.style(sortButtonTitleStyle)
                 )
@@ -125,6 +125,10 @@ extension ServersView {
     private func sortButtonStyle(_ v: UIButton) {
         v.backgroundColor = UIColor(red: 0.46, green: 0.38, blue: 0.72, alpha: 0.8)
         v.height(50 + Config.UI.botSafeArea)
+    }
+    
+    private func sortButtonContainerStyle(_ v: UIView) {
+        v.isUserInteractionEnabled = false
     }
     
     private func sortButtonIconStyle(_ v: UIImageView) {
