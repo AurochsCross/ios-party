@@ -2,12 +2,16 @@ import Foundation
 import UIKit
 
 class LoadingViewController: UIViewController {
-    
     @IBOutlet weak var loadingImageView: UIImageView!
+    
+    private var serversModel: ServersModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         startSpinningAnimation()
+        serversModel = ServersModel()
+        serversModel?.delegate = self
+        serversModel?.fetchServers()
     }
     
     private func startSpinningAnimation() {
@@ -17,5 +21,24 @@ class LoadingViewController: UIViewController {
             self.startSpinningAnimation()
         }
     }
+}
+
+extension LoadingViewController: ServersModelDelegate {
+    func serversUpdated(_ servers: [Server]) {
+        DispatchQueue.main.async {
+            Router.shared.routeTo(screen: .serverList)
+        }
+    }
     
+    func serverUpdateFailed(_ error: Error) {
+        DispatchQueue.main.async {
+            if let error = error as? AuthorizationError, error == AuthorizationError.unauthorized {
+                AlertUtility.presentAuthorizationFailedAlert(onView: self, routeToLoginScreen: true)
+                print("Server fetch error: unauthorized")
+            } else {
+                AlertUtility.presentGenericErrorAlert(onView: self, error: error)
+                print("Server fetch error: \(error.localizedDescription)")
+            }
+        }
+    }
 }

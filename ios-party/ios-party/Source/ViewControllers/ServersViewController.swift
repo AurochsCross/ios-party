@@ -12,7 +12,7 @@ class ServersViewController: UIViewController {
         serversView.serverTableView.register(ServerTableViewCell.self, forCellReuseIdentifier: ServerTableViewCell.Config.identifier)
         serversView.serverTableView.dataSource = self
         serversView.serverRefreshControl.addTarget(self, action: #selector(updateServers), for: .valueChanged)
-        
+        serversView.logoutButton.addTarget(self, action: #selector(logoutSelected), for: .touchUpInside)
         serversView.sortButton.addTarget(self, action: #selector(chooseSortSelected), for: .touchUpInside)
         
         serversModel.delegate = self
@@ -24,6 +24,8 @@ class ServersViewController: UIViewController {
     
     @objc private func chooseSortSelected() {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        actionSheet.popoverPresentationController?.sourceView = view
+        actionSheet.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.maxY - 60, width: 0, height: 0)
         
         let sortByDistanceAction = UIAlertAction(title: "By Distance", style: .default) { (action) in
             self.serversModel.sortType = .byDistance
@@ -42,6 +44,11 @@ class ServersViewController: UIViewController {
         actionSheet.addAction(cancelAction)
         
         self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    @objc private func logoutSelected() {
+        SessionManager.shared.logout()
+        Router.shared.routeTo(screen: .login)
     }
     
     private func reloadTableWithAnimation() {
@@ -77,6 +84,14 @@ extension ServersViewController: ServersModelDelegate {
     }
     
     func serverUpdateFailed(_ error: Error) {
-        
+        DispatchQueue.main.async {
+            if let error = error as? AuthorizationError, error == AuthorizationError.unauthorized {
+                AlertUtility.presentAuthorizationFailedAlert(onView: self, routeToLoginScreen: true)
+                print("Server fetch error: unauthorized")
+            } else {
+                AlertUtility.presentGenericErrorAlert(onView: self, error: error)
+                print("Server fetch error: \(error.localizedDescription)")
+            }
+        }
     }
 }

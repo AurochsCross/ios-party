@@ -12,6 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="ios_party" customModuleProvider="target">
             <connections>
+                <outlet property="loginActivityIndicator" destination="iEl-Fn-CtO" id="acC-LF-a4Z"/>
+                <outlet property="loginButton" destination="drM-jK-ELA" id="bQv-e5-SNv"/>
                 <outlet property="passwordTextField" destination="PbM-NT-2pp" id="OIO-KZ-Tw8"/>
                 <outlet property="usernameTextField" destination="glO-pe-1GL" id="sjO-4D-R3p"/>
                 <outlet property="view" destination="iN0-l3-epB" id="UiV-eU-HYz"/>
@@ -86,7 +88,6 @@
                                         <constraint firstItem="bcf-tv-OFs" firstAttribute="leading" secondItem="3l8-es-9Z6" secondAttribute="leading" constant="20" id="06K-Vg-y3k"/>
                                         <constraint firstAttribute="bottom" secondItem="PbM-NT-2pp" secondAttribute="bottom" constant="12" id="2Kt-ht-SVO"/>
                                         <constraint firstAttribute="bottom" secondItem="bcf-tv-OFs" secondAttribute="bottom" constant="20" id="9E2-xO-Xwj"/>
-                                        <constraint firstAttribute="height" constant="60" id="E1y-eH-Wyd"/>
                                         <constraint firstItem="PbM-NT-2pp" firstAttribute="leading" secondItem="bcf-tv-OFs" secondAttribute="trailing" constant="12" id="F5O-kC-63U"/>
                                         <constraint firstItem="PbM-NT-2pp" firstAttribute="top" secondItem="3l8-es-9Z6" secondAttribute="top" constant="12" id="WaU-Au-AQR"/>
                                         <constraint firstAttribute="trailing" secondItem="PbM-NT-2pp" secondAttribute="trailing" constant="12" id="ugt-Gr-xKv"/>
@@ -98,29 +99,52 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </view>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drM-jK-ELA">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g7l-Kl-c2p">
                                     <rect key="frame" x="0.0" y="144" width="200" height="60"/>
-                                    <color key="backgroundColor" red="0.68503631963927814" green="0.85604378172588835" blue="0.34710002669805617" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                    <state key="normal" title="Log In">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drM-jK-ELA">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="60"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.68503631963927814" green="0.85604378172588835" blue="0.34710002669805617" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <state key="normal" title="Log In">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="onLoginClicked:" destination="-1" eventType="touchUpInside" id="HIl-9q-hG9"/>
+                                            </connections>
+                                        </button>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="iEl-Fn-CtO">
+                                            <rect key="frame" x="82" y="12" width="36" height="36"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="iEl-Fn-CtO" secondAttribute="height" multiplier="1:1" id="lkl-G4-Zbf"/>
+                                            </constraints>
+                                            <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="iEl-Fn-CtO" firstAttribute="top" secondItem="g7l-Kl-c2p" secondAttribute="top" constant="12" id="8ky-qT-ORh"/>
+                                        <constraint firstAttribute="bottom" secondItem="iEl-Fn-CtO" secondAttribute="bottom" constant="12" id="9Db-7H-1yo"/>
+                                        <constraint firstItem="iEl-Fn-CtO" firstAttribute="centerX" secondItem="g7l-Kl-c2p" secondAttribute="centerX" id="mgt-pA-ooi"/>
+                                    </constraints>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                             <integer key="value" value="4"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <action selector="onLoginClicked:" destination="-1" eventType="touchUpInside" id="HIl-9q-hG9"/>
-                                    </connections>
-                                </button>
+                                </view>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="bc4-JP-cbG" firstAttribute="leading" secondItem="xQZ-Ta-VqK" secondAttribute="leading" id="CNf-Na-DE0"/>
-                                <constraint firstItem="bc4-JP-cbG" firstAttribute="height" secondItem="drM-jK-ELA" secondAttribute="height" id="Cmh-K4-h1X"/>
                                 <constraint firstAttribute="trailing" secondItem="bc4-JP-cbG" secondAttribute="trailing" id="TCS-vw-SRH"/>
-                                <constraint firstAttribute="trailing" secondItem="drM-jK-ELA" secondAttribute="trailing" id="YV0-Zd-IvJ"/>
-                                <constraint firstItem="drM-jK-ELA" firstAttribute="leading" secondItem="xQZ-Ta-VqK" secondAttribute="leading" id="hCc-EP-n5A"/>
+                                <constraint firstItem="3l8-es-9Z6" firstAttribute="height" secondItem="bc4-JP-cbG" secondAttribute="height" id="Xgd-lN-xuf"/>
+                                <constraint firstItem="g7l-Kl-c2p" firstAttribute="height" secondItem="bc4-JP-cbG" secondAttribute="height" id="f8x-Dx-OLp"/>
                             </constraints>
                         </stackView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VZa-ok-w0i">

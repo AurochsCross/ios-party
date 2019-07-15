@@ -5,7 +5,7 @@ import Stevia
 class ServersView: UIView {
     private let headerView = UIView()
     private let imageView = UIImageView()
-    private let logoutButton = UIButton()
+    let logoutButton = UIButton()
     
     private let listHeaderView = UIView()
     private let listHeaderServerTitle = UILabel()

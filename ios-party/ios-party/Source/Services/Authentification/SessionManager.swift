@@ -1,11 +1,16 @@
 import Foundation
 
 class SessionManager {
+    
+    // Mark: - Public variables
     public static let shared = SessionManager()
     public var delegate: SessionManagerDelegate?
     
+    // Mark: - Private variables
     private let keychainManager = KeychainManager()
     
+    
+    // Mark: - Fields
     public var isAuthenticated: Bool {
         return token != nil
     }
@@ -19,6 +24,7 @@ class SessionManager {
         }
     }
     
+    // Mark: - Public actions
     public func login(withUsername username: String, password: String) {
         if isAuthenticated {
             logout()
