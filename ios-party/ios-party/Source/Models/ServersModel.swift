@@ -8,16 +8,18 @@ class ServersModel {
         case alphanumerical
     }
     
-    // Mark: - Public variables
+    // MARK: - Public variables
     public weak var delegate: ServersModelDelegate?
     
-    // Mark: - Private variables
+    // MARK: - Private variables
     private var storedServers = [Server]()
     private var sortedServerCahce: [Server]?
+    
     private var managedContext: NSManagedObjectContext?
     private var serverEntityDescription: NSEntityDescription?
+    private let apiManager = ApiManager()
     
-    // Mark: - Public fields
+    // MARK: - Public fields
     var availableServers: [Server] {
         return storedServers.filter { $0.isOnline }
     }
@@ -40,7 +42,7 @@ class ServersModel {
         }
     }
     
-    // Mark: - Lifecycle
+    // MARK: - Lifecycle
     init() {
         setupCoreData()
         fetchStoredServers()
@@ -50,7 +52,7 @@ class ServersModel {
         managedContext = nil
     }
     
-    // Mark: - Actions
+    // MARK: - Actions
     func getServerList(sorted sortType: SortType? = nil) -> [Server] {
         self.sortType = sortType ?? self.sortType
         
@@ -71,30 +73,21 @@ class ServersModel {
     }
     
     func fetchServers() {
-        guard let token = SessionManager.shared.token else { return }
-        let url = URL(string: Config.Api.Endpoint.servers)!
-        var request = URLRequest(url: url)
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        guard let token = SessionManager.shared.token else {
+            self.delegate?.serverUpdateFailed(AuthorizationError.unauthorized)
+            return
+        }
         
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        apiManager.fetchServers(withToken: token) { (result, error) in
             if let error = error {
                 self.delegate?.serverUpdateFailed(error)
-                return
-            }
-         
-            if let response = response as? HTTPURLResponse, response.statusCode == 401 {
-                self.delegate?.serverUpdateFailed(AuthorizationError.unauthorized)
-                return
-            }
-            
-            if let data = data, let servers = ServerServiceResponseContainer.decode(fromData: data)?.servers {
-                self.updateServers(withReceivedServerList: servers)
+            } else if let result = result {
+                self.updateServers(withReceivedServerList: result)
             }
         }
-        task.resume()
     }
     
-    // Mark: - Private Actions
+    // MARK: - Private Actions
     private func updateServers(withReceivedServerList serverList: [ServerServiceResponse]) {
         sortedServerCahce = nil
         storedServers.forEach { $0.isOnline = false }
@@ -139,6 +132,7 @@ class ServersModel {
         }
     }
     
+    // MARK: - Utility Actions
     private func setupCoreData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         managedContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)

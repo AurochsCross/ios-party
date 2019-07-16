@@ -1,6 +1,7 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    // MARK: - Outlets
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var viewBottomSafeAreaConstraint: NSLayoutConstraint!
@@ -8,8 +9,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var loginActivityIndicator: UIActivityIndicatorView!
     
+    // MARK: - Private variables
     private let sessionManager = SessionManager()
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         sessionManager.delegate = self
         usernameTextField.delegate = self
@@ -17,6 +20,7 @@ class LoginViewController: UIViewController {
         loginActivityIndicator.stopAnimating()
     }
     
+    // MARK: - Actions
     @IBAction func onLoginClicked(_ sender: Any) {
         if let username = usernameTextField.text,
             let password = passwordTextField.text {
@@ -39,6 +43,7 @@ class LoginViewController: UIViewController {
     }
 }
 
+// MARK: - SessionManagerDelegate
 extension LoginViewController: SessionManagerDelegate {
     func sessionManagerLoginSuccessful(_ sessionManager: SessionManager) {
         DispatchQueue.main.async {
@@ -61,6 +66,7 @@ extension LoginViewController: SessionManagerDelegate {
     }
 }
 
+// MARK: - UITextFieldDelegate
 extension LoginViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         UIView.animate(withDuration: 0.5) {

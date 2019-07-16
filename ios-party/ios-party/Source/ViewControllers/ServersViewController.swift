@@ -2,8 +2,10 @@ import Foundation
 import UIKit
 
 class ServersViewController: UIViewController {
+    // MARK: - Private variables
     private let serversModel = ServersModel()
     
+    // MARK: - Lifecycle
     override func loadView() {
         let serversView = ServersView()
         self.view = serversView
@@ -18,11 +20,14 @@ class ServersViewController: UIViewController {
         serversModel.delegate = self
     }
     
+    // MARK: - Actions
     @objc private func updateServers() {
         serversModel.fetchServers()
     }
     
     @objc private func chooseSortSelected() {
+        displaySortButton(false)
+        
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         actionSheet.popoverPresentationController?.sourceView = view
         actionSheet.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.maxY - 60, width: 0, height: 0)
@@ -30,20 +35,24 @@ class ServersViewController: UIViewController {
         let sortByDistanceAction = UIAlertAction(title: "By Distance", style: .default) { (action) in
             self.serversModel.sortType = .byDistance
             self.reloadTableWithAnimation()
+            self.displaySortButton(true)
         }
         
         let sortByAlphanumericalAction = UIAlertAction(title: "Alphanumerical", style: .default) { (action) in
             self.serversModel.sortType = .alphanumerical
             self.reloadTableWithAnimation()
+            self.displaySortButton(true)
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            self.displaySortButton(true)
+        }
         
         actionSheet.addAction(sortByDistanceAction)
         actionSheet.addAction(sortByAlphanumericalAction)
         actionSheet.addAction(cancelAction)
         
-        self.present(actionSheet, animated: true, completion: nil)
+        self.present(actionSheet, animated: true)
     }
     
     @objc private func logoutSelected() {
@@ -56,8 +65,17 @@ class ServersViewController: UIViewController {
             UIView.transition(with: view.serverTableView, duration: 1.0, options: .transitionCrossDissolve, animations: { view.serverTableView.reloadData() }, completion: nil)
         }
     }
+    
+    func displaySortButton(_ shouldDisplay: Bool) {
+        guard let sortButton = (view as? ServersView)?.sortButton else { return }
+        sortButton.heightConstraint?.constant = (shouldDisplay ? (50 + Config.UI.botSafeArea) : 0)
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
+    }
 }
 
+// MARK: - UITableViewDataSource
 extension ServersViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return serversModel.availableServers.count
@@ -73,6 +91,7 @@ extension ServersViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - ServersModelDelegate
 extension ServersViewController: ServersModelDelegate {
     func serversUpdated(_ servers: [Server]) {
         DispatchQueue.main.async {

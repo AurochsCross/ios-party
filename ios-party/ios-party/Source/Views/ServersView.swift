@@ -3,6 +3,8 @@ import UIKit
 import Stevia
 
 class ServersView: UIView {
+    
+    // MARK: - UI Elements
     private let headerView = UIView()
     private let imageView = UIImageView()
     let logoutButton = UIButton()
@@ -14,12 +16,13 @@ class ServersView: UIView {
     let serverTableView = UITableView()
     let serverRefreshControl = UIRefreshControl()
     
-    let sortButton = UIButton()
+    var sortButton = UIButton()
     private let sortButtonContentContainer = UIView()
     private let sortButtonTitle = UILabel()
     private let sortButtonIcon = UIImageView()
     
     
+    // MARK: - Layout
     func setup() {
         setupLayout()
         setupLabels()
@@ -52,7 +55,7 @@ class ServersView: UIView {
             0,
             |serverTableView|,
             0,
-            |sortButton|,
+            |sortButton.height(50 + Config.UI.botSafeArea)|,
             0
         )
         
@@ -124,7 +127,7 @@ extension ServersView {
     
     private func sortButtonStyle(_ v: UIButton) {
         v.backgroundColor = UIColor(red: 0.46, green: 0.38, blue: 0.72, alpha: 0.8)
-        v.height(50 + Config.UI.botSafeArea)
+        v.clipsToBounds = true
     }
     
     private func sortButtonContainerStyle(_ v: UIView) {

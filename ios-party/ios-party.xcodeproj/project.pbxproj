@@ -36,6 +36,7 @@
 		A7B0A1CC22DC65B8006C36BC /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B0A1CB22DC65B8006C36BC /* Router.swift */; };
 		A7B0A1CE22DC66CA006C36BC /* UIApplication+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B0A1CD22DC66CA006C36BC /* UIApplication+Animations.swift */; };
 		A7F1B94222DCB905002DC9D4 /* AlertUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F1B94122DCB905002DC9D4 /* AlertUtility.swift */; };
+		A7F1B94422DDB454002DC9D4 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F1B94322DDB454002DC9D4 /* ApiManager.swift */; };
 		DC8F3A8D22DB725700C528B7 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC8F3A8C22DB725700C528B7 /* LoadingView.xib */; };
 		DC8F3A9122DB77CE00C528B7 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8F3A9022DB77CE00C528B7 /* LoadingViewController.swift */; };
 /* End PBXBuildFile section */
@@ -73,6 +74,7 @@
 		A7B0A1CB22DC65B8006C36BC /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		A7B0A1CD22DC66CA006C36BC /* UIApplication+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Animations.swift"; sourceTree = "<group>"; };
 		A7F1B94122DCB905002DC9D4 /* AlertUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertUtility.swift; sourceTree = "<group>"; };
+		A7F1B94322DDB454002DC9D4 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		DC8F3A8C22DB725700C528B7 /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		DC8F3A9022DB77CE00C528B7 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		FEE70CBA5E7A4248CC0E1CB1 /* Pods-ios-party.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-party.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios-party/Pods-ios-party.release.xcconfig"; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			children = (
 				A78E2ED322D5FF5D00EB1080 /* Authentification */,
 				A7B0A1CB22DC65B8006C36BC /* Router.swift */,
+				A7F1B94322DDB454002DC9D4 /* ApiManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -384,12 +387,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ios-party/Pods-ios-party-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/SteviaLayout/Stevia.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stevia.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A78E2F0022D6F6B100EB1080 /* ServersModel.swift in Sources */,
+				A7F1B94422DDB454002DC9D4 /* ApiManager.swift in Sources */,
 				A78E2EED22D6261000EB1080 /* LoginViewController.swift in Sources */,
 				A78E2F0822D7664500EB1080 /* Config+CoreData.swift in Sources */,
 				A78E2F0422D7176E00EB1080 /* ServersModelDelegate.swift in Sources */,

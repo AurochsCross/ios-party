@@ -2,29 +2,30 @@ import Foundation
 
 class SessionManager {
     
-    // Mark: - Public variables
+    // MARK: - Public variables
     public static let shared = SessionManager()
     public var delegate: SessionManagerDelegate?
     
-    // Mark: - Private variables
+    // MARK: - Private variables
+    private let apiManager = ApiManager()
     private let keychainManager = KeychainManager()
     
     
-    // Mark: - Fields
+    // MARK: - Fields
     public var isAuthenticated: Bool {
         return token != nil
     }
 
     private(set) var token: String? {
         get {
-            return keychainManager[Config.Security.keychainTokenKey]
+            return keychainManager.token
         }
         set {
-            keychainManager[Config.Security.keychainTokenKey] = newValue
+            keychainManager.token = newValue
         }
     }
     
-    // Mark: - Public actions
+    // MARK: - Public actions
     public func login(withUsername username: String, password: String) {
         if isAuthenticated {
             logout()
@@ -38,39 +39,15 @@ class SessionManager {
         token = nil
     }
     
+    // MARK: - Private actions
     private func requestAuthentificationToken(forUser user: TokenServiceUser) {
-        guard let jsonBody = user.getJsonData() else { return }
-        
-        let url = URL(string: Config.Api.Endpoint.token)!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        request.httpBody = jsonBody
-        
-        let task = URLSession.shared.dataTask(with: request) { [unowned self] (data, response, error) in
+        apiManager.requestAuthentificationToken(forUser: user) { (result, error) in
             if let error = error {
                 self.delegate?.sessionManagerLoginError(self, error: error)
-                return
+            } else if let result = result {
+                self.token = result.token
+                self.delegate?.sessionManagerLoginSuccessful(self)
             }
-            
-            if let response = response as? HTTPURLResponse, response.statusCode == 401 {
-                self.delegate?.sessionManagerLoginError(self, error: AuthorizationError.unauthorized)
-                return
-            }
-            
-            guard let data = data else {
-                self.delegate?.sessionManagerLoginError(self, error: AuthorizationError.emptyResponse)
-                return
-            }
-            
-            guard let tokenResponse = TokenServiceResponse.decode(fromData: data) else {
-                self.delegate?.sessionManagerLoginError(self, error: AuthorizationError.unknown)
-                return
-            }
-            
-            self.token = tokenResponse.token
-            self.delegate?.sessionManagerLoginSuccessful(self)
         }
-        task.resume()
     }
 }

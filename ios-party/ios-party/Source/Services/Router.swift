@@ -2,10 +2,6 @@ import Foundation
 import UIKit
 
 class Router {
-    static let shared = Router()
-    
-    private let sessionManager = SessionManager.shared
-    
     enum RoutableScreen {
         case loading
         case login
@@ -13,12 +9,15 @@ class Router {
         
         func getViewController() -> UIViewController {
             switch self {
-                case .loading: return LoadingViewController()
-                case .login: return LoginViewController()
-                case .serverList: return ServersViewController()
+            case .loading: return LoadingViewController()
+            case .login: return LoginViewController()
+            case .serverList: return ServersViewController()
             }
         }
     }
+    
+    static let shared = Router()
+    private let sessionManager = SessionManager.shared
     
     func getInitialViewController() -> UIViewController {
         if sessionManager.isAuthenticated {

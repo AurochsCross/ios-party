@@ -1,3 +1,4 @@
 extension Config.Security {
-    static let keychainTokenKey = "token2"
+    static let keychainService = "petrasmalinauskas.ios-party"
+    static let keychainTokenKey = "token"
 }

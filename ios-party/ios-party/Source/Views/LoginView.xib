@@ -102,9 +102,8 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g7l-Kl-c2p">
                                     <rect key="frame" x="0.0" y="144" width="200" height="60"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drM-jK-ELA">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drM-jK-ELA">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="60"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.68503631963927814" green="0.85604378172588835" blue="0.34710002669805617" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <state key="normal" title="Log In">
@@ -131,7 +130,11 @@
                                     <constraints>
                                         <constraint firstItem="iEl-Fn-CtO" firstAttribute="top" secondItem="g7l-Kl-c2p" secondAttribute="top" constant="12" id="8ky-qT-ORh"/>
                                         <constraint firstAttribute="bottom" secondItem="iEl-Fn-CtO" secondAttribute="bottom" constant="12" id="9Db-7H-1yo"/>
+                                        <constraint firstAttribute="bottom" secondItem="drM-jK-ELA" secondAttribute="bottom" id="QI7-4J-lxM"/>
+                                        <constraint firstAttribute="trailing" secondItem="drM-jK-ELA" secondAttribute="trailing" id="X0z-kx-MoU"/>
                                         <constraint firstItem="iEl-Fn-CtO" firstAttribute="centerX" secondItem="g7l-Kl-c2p" secondAttribute="centerX" id="mgt-pA-ooi"/>
+                                        <constraint firstItem="drM-jK-ELA" firstAttribute="top" secondItem="g7l-Kl-c2p" secondAttribute="top" id="uvL-er-6pb"/>
+                                        <constraint firstItem="drM-jK-ELA" firstAttribute="leading" secondItem="g7l-Kl-c2p" secondAttribute="leading" id="zcM-Py-j91"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
