@@ -1,0 +1,6 @@
+target 'ios-party' do
+  pod 'SteviaLayout'
+  use_frameworks!
+  pod 'KeychainAccess'
+
+end

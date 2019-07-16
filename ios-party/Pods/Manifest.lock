@@ -1,0 +1,20 @@
+PODS:
+  - KeychainAccess (3.2.0)
+  - SteviaLayout (4.4.4)
+
+DEPENDENCIES:
+  - KeychainAccess
+  - SteviaLayout
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - KeychainAccess
+    - SteviaLayout
+
+SPEC CHECKSUMS:
+  KeychainAccess: 3b1bf8a77eb4c6ea1ce9404c292e48f948954c6b
+  SteviaLayout: 523469269059f2c6da02820bb2ff28a5fe0780aa
+
+PODFILE CHECKSUM: 0d94d2588ed10056fccae9dd37f644b00004ab7a
+
+COCOAPODS: 1.5.3
