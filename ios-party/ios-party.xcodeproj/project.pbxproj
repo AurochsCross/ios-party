@@ -161,9 +161,9 @@
 		A78E2ECF22D5FCF700EB1080 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DC8F3A9022DB77CE00C528B7 /* LoadingViewController.swift */,
 				A78E2EEC22D6261000EB1080 /* LoginViewController.swift */,
 				A78E2EFC22D6F67400EB1080 /* ServersViewController.swift */,
-				DC8F3A9022DB77CE00C528B7 /* LoadingViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -188,8 +188,8 @@
 			isa = PBXGroup;
 			children = (
 				A78E2ED322D5FF5D00EB1080 /* Authentification */,
-				A7B0A1CB22DC65B8006C36BC /* Router.swift */,
 				A7F1B94322DDB454002DC9D4 /* ApiManager.swift */,
+				A7B0A1CB22DC65B8006C36BC /* Router.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -197,9 +197,9 @@
 		A78E2ED322D5FF5D00EB1080 /* Authentification */ = {
 			isa = PBXGroup;
 			children = (
+				A78E2EF022D6E43B00EB1080 /* KeychainManager.swift */,
 				A78E2ED922D60D0100EB1080 /* SessionManager.swift */,
 				A78E2EE622D6242D00EB1080 /* SessionManagerDelegate.swift */,
-				A78E2EF022D6E43B00EB1080 /* KeychainManager.swift */,
 			);
 			path = Authentification;
 			sourceTree = "<group>";
@@ -208,8 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				A78E2F0122D70E4F00EB1080 /* ServerServiceResponse.swift */,
-				A78E2EDC22D60E6700EB1080 /* TokenServiceUser.swift */,
 				A78E2EDF22D61AF000EB1080 /* TokenServiceResponse.swift */,
+				A78E2EDC22D60E6700EB1080 /* TokenServiceUser.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -236,13 +236,13 @@
 		A78E2F0922D76C6D00EB1080 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				A7BDAABD22DCB5D2008DBECD /* Utilities */,
 				A78E2F0B22D76D1000EB1080 /* Config */,
 				A78E2ED022D5FCFF00EB1080 /* Entities */,
 				A78E2F0A22D76CA200EB1080 /* Errors */,
 				A78E2EE122D61C6D00EB1080 /* Extensions */,
 				A78E2EFE22D6F69900EB1080 /* Models */,
 				A78E2ED222D5FF5000EB1080 /* Services */,
+				A7BDAABD22DCB5D2008DBECD /* Utilities */,
 				A78E2ECF22D5FCF700EB1080 /* ViewControllers */,
 				A78E2ECE22D5FCF100EB1080 /* Views */,
 			);
@@ -263,8 +263,8 @@
 				A78E2EB822D5FCAF00EB1080 /* AppDelegate.swift */,
 				A78E2ED522D5FFCA00EB1080 /* Config.swift */,
 				A78E2ED722D6000B00EB1080 /* Config+Api.swift */,
-				A78E2EF222D6E65300EB1080 /* Config+Security.swift */,
 				A78E2F0722D7664400EB1080 /* Config+CoreData.swift */,
+				A78E2EF222D6E65300EB1080 /* Config+Security.swift */,
 				A78E2F1222D785EA00EB1080 /* Config+UI.swift */,
 			);
 			path = Config;

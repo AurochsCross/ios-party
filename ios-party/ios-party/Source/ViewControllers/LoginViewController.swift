@@ -56,10 +56,10 @@ extension LoginViewController: SessionManagerDelegate {
         DispatchQueue.main.async {
             self.stopLoginAnimating()
             if let error = error as? AuthorizationError, error == AuthorizationError.unauthorized {
-                AlertUtility.presentAuthorizationFailedAlert(onView: self, routeToLoginScreen: false)
+                AlertUtility.presentAlert(on: self, title: "Error", message: "Failed authorization")
                 print("Login error: unauthorized")
             } else {
-                AlertUtility.presentGenericErrorAlert(onView: self, error: error)
+                AlertUtility.presentAlert(on: self, title: "Error", message: error.localizedDescription)
                 print("Login error: \(error.localizedDescription)")
             }
         }

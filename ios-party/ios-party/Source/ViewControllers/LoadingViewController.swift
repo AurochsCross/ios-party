@@ -38,10 +38,12 @@ extension LoadingViewController: ServersModelDelegate {
     func serverUpdateFailed(_ error: Error) {
         DispatchQueue.main.async {
             if let error = error as? AuthorizationError, error == AuthorizationError.unauthorized {
-                AlertUtility.presentAuthorizationFailedAlert(onView: self, routeToLoginScreen: true)
+                AlertUtility.presentAlert(on: self, title: "Error", message: "Failed authorization") {
+                    Router.shared.routeTo(screen: .login)
+                }
                 print("Server fetch error: unauthorized")
             } else {
-                AlertUtility.presentGenericErrorAlert(onView: self, error: error)
+                AlertUtility.presentAlert(on: self, title: "Error", message: error.localizedDescription)
                 print("Server fetch error: \(error.localizedDescription)")
             }
         }
